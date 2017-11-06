@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-9 10:22:42 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.crm.pojo.SalPlan" table="sal_plan">
+        <id name="plaId" type="long">
+            <column name="pla_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="plaDate" type="java.util.Date">
+            <column name="pla_date" />
+        </property>
+        <property name="plaTodo" type="java.lang.String">
+            <column name="pla_todo" />
+        </property>
+        <property name="plaResult" type="java.lang.String">
+            <column name="pla_result" />
+        </property>
+        <!-- 
+        	在銷售計劃和銷售機會中，指定銷售計劃擁有控制權
+			配置一对一关联时，在有外键的地方=<m-t-o unique="true">
+         -->
+        <many-to-one name="salChance" unique="true" column="pla_chc_id"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.crm.pojo.SysRoleRight" table="sys_role_right">
+		<id name="rfId" column="rf_id" type="java.lang.Long">
+			<generator class="native"/><!-- 自增长 -->
+		</id>
+		
+		<many-to-one name="sysRole" class="com.crm.pojo.SysRole" column="rf_role_id"  />
+		<many-to-one name="sysRight" class="com.crm.pojo.SysRight" column="rf_right_code" />
+		
+	</class>
+</hibernate-mapping>
+<!-- 检查是否已在hibernate.cfg.xml配置此资源 -->

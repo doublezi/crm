@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-11 10:15:17 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.crm.pojo.CstLinkMan" table="cst_linkman">
+        <id name="lkmId" type="long">
+            <column name="lkm_id" />
+            <generator class="native" />
+        </id>
+        <property name="lkmName" type="java.lang.String">
+            <column name="lkm_name" />
+        </property>
+        <property name="lkmSex" type="java.lang.String">
+            <column name="lkm_sex" />
+        </property>
+        <property name="lkmPostion" type="java.lang.String">
+            <column name="lkm_postion" />
+        </property>
+        <property name="lkmTel" type="java.lang.String">
+            <column name="lkm_tel" />
+        </property>
+        <property name="lkmMobile" type="java.lang.String">
+            <column name="lkm_mobile" />
+        </property>
+        <property name="lkmMemo" type="java.lang.String">
+            <column name="lkm_memo" />
+        </property>
+        
+       	<many-to-one name="cstCustomer" class="com.crm.pojo.CstCustomer" column="lkm_cust_no"/>
+    </class>
+</hibernate-mapping>

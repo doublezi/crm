@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.crm.pojo.SysRight" table="sys_right">
+		<id name="rightCode" column="right_code">
+			<generator class="assigned"/>
+		</id>
+		<property name="rightParentCode" column="right_parent_code"/>
+		<property name="rightType" column="right_type"/>
+		<property name="rightText" column="right_text"/>
+		<property name="rightUrl" column="right_url"/>
+		<property name="rightTip" column="right_tip"/>
+		
+		<!-- inverse="false"：SysRoleRight持有控制权 -->
+		<list name="sysRoleRight" cascade="save-update" inverse="false">
+			<key column="rf_right_code"/><!-- sys_role_right表外键（关联） -->
+			<index column="rf_id"/><!-- sys_role_right表主键 -->
+			<one-to-many class="com.crm.pojo.SysRoleRight"/>
+		</list>
+	</class>
+</hibernate-mapping>
+<!-- 检查是否已在hibernate.cfg.xml配置此资源 -->

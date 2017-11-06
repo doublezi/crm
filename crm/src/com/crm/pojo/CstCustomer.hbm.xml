@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-11 10:15:17 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.crm.pojo.CstCustomer" table="cst_customer">
+        <id name="custNo" type="java.lang.String">
+            <column name="cust_no" />
+            <generator class="assigned" />
+        </id>
+        <property name="custName" type="java.lang.String">
+            <column name="cust_name" />
+        </property>
+        <property name="custRegion" type="java.lang.String">
+            <column name="cust_region" />
+        </property>
+        <property name="custManagerId" type="long">
+            <column name="cust_manager_id" />
+        </property>
+        <property name="custManagerName" type="java.lang.String">
+            <column name="cust_manager_name" />
+        </property>
+        <property name="custLevel" type="int">
+            <column name="cust_level" />
+        </property>
+        <property name="custLevelLabel" type="java.lang.String">
+            <column name="cust_level_label" />
+        </property>
+        <property name="custSatisfy" type="int">
+            <column name="cust_satisfy" />
+        </property>
+        <property name="custCredit" type="int">
+            <column name="cust_credit" />
+        </property>
+        <property name="custAddr" type="java.lang.String">
+            <column name="cust_addr" />
+        </property>
+        <property name="custZip" type="char">
+            <column name="cust_zip" />
+        </property>
+        <property name="custTel" type="java.lang.String">
+            <column name="cust_tel" />
+        </property>
+        <property name="custFax" type="java.lang.String">
+            <column name="cust_fax" />
+        </property>
+        <property name="custWebsite" type="java.lang.String">
+            <column name="cust_website" />
+        </property>
+        <property name="custLicenceNo" type="java.lang.String">
+            <column name="cust_licence_no" />
+        </property>
+        <property name="custChieftain" type="java.lang.String">
+            <column name="cust_chieftain" />
+        </property>
+        <property name="custBankroll" type="long">
+            <column name="cust_bankroll" />
+        </property>
+        <property name="custTurnover" type="long">
+            <column name="cust_turnover" />
+        </property>
+        <property name="custBank" type="java.lang.String">
+            <column name="cust_bank" />
+        </property>
+        <property name="custBankAccount" type="java.lang.String">
+            <column name="cust_bank_account" />
+        </property>
+        <property name="custLocalTaxNo" type="java.lang.String">
+            <column name="cust_local_tax_no" />
+        </property>
+        <property name="custNationalTaxNo" type="java.lang.String">
+            <column name="cust_national_tax_no" />
+        </property>
+        <property name="custStatus" type="char">
+            <column name="cust_status" />
+        </property>
+        
+        <set name="cstLinkMans" cascade="delete" inverse="true" >
+        	<key column="lkm_cust_no"/>
+        	<one-to-many class="com.crm.pojo.CstLinkMan"  />
+        </set>
+        <set name="cstServices" cascade="all" inverse="true" ><!-- 即使是双向关联，由多方维护关联是明智的 -->
+        	<key column="svr_cust_no"/>
+        	<one-to-many class="com.crm.pojo.CstService"/>
+        </set>
+        <one-to-one name="cstActivity" class="com.crm.pojo.CstActivity" property-ref="cstCustomer"/>
+   		<one-to-one name="cstLost" class="com.crm.pojo.CstLost" property-ref="cstCustomer"/>
+    </class>
+</hibernate-mapping>

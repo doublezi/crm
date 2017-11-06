@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-3 14:17:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.crm.pojo.SysUser" table="sys_user">
+        <id name="userId" type="long">
+            <column name="user_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="user_name" />
+        </property>
+        <property name="userPassword" type="java.lang.String">
+            <column name="user_password" />
+        </property>
+        <property name="userFlag" type="int">
+            <column name="user_flag" />
+        </property>
+        <many-to-one name="sysRole" class="com.crm.pojo.SysRole" >
+            <column name="user_role_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

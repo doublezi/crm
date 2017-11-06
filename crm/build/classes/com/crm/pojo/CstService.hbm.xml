@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-16 16:18:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.crm.pojo.CstService" table="cst_service">
+        <id name="svrId" type="long">
+            <column name="svr_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="svrType" type="java.lang.String">
+            <column name="svr_type" />
+        </property>
+        <property name="svrTitle" type="java.lang.String">
+            <column name="svr_title" />
+        </property>
+        <property name="svrStatus" type="java.lang.String">
+            <column name="svr_status" />
+        </property>
+        <property name="svrRequest" type="java.lang.String">
+            <column name="svr_request" />
+        </property>
+        <property name="svrCreateId" type="long">
+            <column name="svr_create_id" />
+        </property>
+        <property name="svrCreateName" type="java.lang.String">
+            <column name="svr_create_name" />
+        </property>
+        <property name="svrCreateDate" type="java.util.Date">
+            <column name="svr_create_date" />
+        </property>
+        <property name="svrDueId" type="long">
+            <column name="svr_due_id" />
+        </property>
+        <property name="svrDueName" type="java.lang.String">
+            <column name="svr_due_name" />
+        </property>
+        <property name="svrDueDate" type="java.util.Date">
+            <column name="svr_due_date" />
+        </property>
+        <property name="svrDeal" type="java.lang.String">
+            <column name="svr_deal" />
+        </property>
+        <property name="svrDealId" type="long">
+            <column name="svr_deal_id" />
+        </property>
+        <property name="svrDealName" type="java.lang.String">
+            <column name="svr_deal_name" />
+        </property>
+        <property name="svrDealDate" type="java.util.Date">
+            <column name="svr_deal_date" />
+        </property>
+        <property name="svrResult" type="java.lang.String">
+            <column name="svr_result" />
+        </property>
+        <property name="svrSatisfy" type="int">
+            <column name="svr_satisfy" />
+        </property>
+        
+        <many-to-one name="cstCustomer" class="com.crm.pojo.CstCustomer" column="svr_cust_no"/>
+    </class>
+</hibernate-mapping>

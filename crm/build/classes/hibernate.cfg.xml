@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:mysql:///db_crm
+		</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		<property name="hibernate.connection.password">
+			<!-- 当前数据库连接不需要密码 -->
+		</property>
+		
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		
+		<!-- 显示SQL语句，在控制台显示 -->
+		<property name="hibernate.show_sql">
+			true
+		</property>
+		<!-- 格式化SQL语句 -->
+		<property name="hibernate.format_sql">
+			true
+		</property>
+		<!-- 生成数据库的表结构 
+			update：如果没有表结构，创建表结构。如果存在，不会创建，添加数据
+		-->
+		<property name="hibernate.hbm2ddl.auto">
+			update
+		</property>
+		
+		<mapping resource="com/crm/pojo/SysRole.hbm.xml"/>
+		<mapping resource="com/crm/pojo/SysUser.hbm.xml"/>
+		<mapping resource="com/crm/pojo/SysRight.hbm.xml"/>
+		<mapping resource="com/crm/pojo/SysRoleRight.hbm.xml"/>
+		<mapping resource="com/crm/pojo/SalChance.hbm.xml"/>
+		<mapping resource="com/crm/pojo/SalPlan.hbm.xml"/>
+		<mapping resource="com/crm/pojo/CstCustomer.hbm.xml"/>
+		<mapping resource="com/crm/pojo/CstLinkMan.hbm.xml"/>
+		<mapping resource="com/crm/pojo/CstActivity.hbm.xml"/>
+		<mapping resource="com/crm/pojo/CstLost.hbm.xml"/>
+		<mapping resource="com/crm/pojo/CstService.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>
