@@ -20,6 +20,7 @@ public class CstActivityDaoImpl implements CstActivityDao {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+	
 	// ---
 	// ---
 	// ---
@@ -44,7 +45,7 @@ public class CstActivityDaoImpl implements CstActivityDao {
 		CstActivity cstActivity = getSession().get(CstActivity.class, id);
 		return cstActivity;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CstActivity> findAll() {

@@ -38,17 +38,11 @@ public class CstCustomer {
 	private char custStatus;//客户状态
 	
 	//. 关联属性
-	private Set<CstLinkMan> cstLinkMans;
-	public Set<CstLinkMan> getCstLinkMans() {return cstLinkMans;}
-	public void setCstLinkMans(Set<CstLinkMan> cstLinkMans) {this.cstLinkMans = cstLinkMans;}
 	
 	private CstActivity cstActivity;
 	public CstActivity getCstActivity() {return cstActivity;}
 	public void setCstActivity(CstActivity cstActivity) {this.cstActivity = cstActivity;}
 	
-	private CstLost cstLost;
-	public CstLost getCstLost() {return cstLost;}
-	public void setCstLost(CstLost cstLost) {this.cstLost = cstLost;}
 	
 	private Set<CstService> cstServices;
 	public Set<CstService> getCstServices() {return cstServices;}

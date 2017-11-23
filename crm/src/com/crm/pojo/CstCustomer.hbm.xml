@@ -75,15 +75,12 @@
             <column name="cust_status" />
         </property>
         
-        <set name="cstLinkMans" cascade="delete" inverse="true" >
-        	<key column="lkm_cust_no"/>
-        	<one-to-many class="com.crm.pojo.CstLinkMan"  />
-        </set>
+        <!-- 客户与客户服务的关联配置 -->
         <set name="cstServices" cascade="all" inverse="true" ><!-- 即使是双向关联，由多方维护关联是明智的 -->
         	<key column="svr_cust_no"/>
         	<one-to-many class="com.crm.pojo.CstService"/>
         </set>
+        <!-- 客户与客户交往记录的关联配置 -->
         <one-to-one name="cstActivity" class="com.crm.pojo.CstActivity" property-ref="cstCustomer"/>
-   		<one-to-one name="cstLost" class="com.crm.pojo.CstLost" property-ref="cstCustomer"/>
     </class>
 </hibernate-mapping>

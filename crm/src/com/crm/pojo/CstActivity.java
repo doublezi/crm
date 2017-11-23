@@ -14,7 +14,7 @@ public class CstActivity {
 
 	//.基础属性
 	private long atvId;//主键
-	private Date atvDate;//来往日期
+	private Date atvDate;//来往日期 【备注：需要开发一个日期转换器】
 	private String atvPlace;//来往地址
 	private String atvTitle;//概要
 	private String atvDesc;//描述

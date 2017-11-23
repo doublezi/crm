@@ -35,11 +35,7 @@
 			<list>
 				<value>com/crm/pojo/CstActivity.hbm.xml</value>
 				<value>com/crm/pojo/CstCustomer.hbm.xml</value>
-				<value>com/crm/pojo/CstLinkMan.hbm.xml</value>
-				<value>com/crm/pojo/CstLost.hbm.xml</value>
 				<value>com/crm/pojo/CstService.hbm.xml</value>
-				<value>com/crm/pojo/SalChance.hbm.xml</value>
-				<value>com/crm/pojo/SalPlan.hbm.xml</value>
 				<value>com/crm/pojo/SysRight.hbm.xml</value>
 				<value>com/crm/pojo/SysRole.hbm.xml</value>
 				<value>com/crm/pojo/SysRoleRight.hbm.xml</value>
@@ -82,40 +78,13 @@
 
 	
 	<!-- DAO 数据访问层配置区域-->
-	<bean id="basDictDao" class="com.crm.dao.impl.BasDictDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	<bean id="cstActivityDao" class="com.crm.dao.impl.CstActivityDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="cstCustomerDao" class="com.crm.dao.impl.CstCustomerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<bean id="cstLinkManDao" class="com.crm.dao.impl.CstLinkManDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="cstLostDao" class="com.crm.dao.impl.CstLostDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="cstOrderDao" class="com.crm.dao.impl.CstOrderDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	<bean id="cstServiceDao" class="com.crm.dao.impl.CstServiceDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="orderLineDao" class="com.crm.dao.impl.OrderLineDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="proProductDao" class="com.crm.dao.impl.ProProductDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="proStorageDao" class="com.crm.dao.impl.ProStorageDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="salChanceDao" class="com.crm.dao.impl.SalChanceDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="salPlanDao" class="com.crm.dao.impl.SalPlanDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="sysRoleDao" class="com.crm.dao.impl.SysRoleDaoImpl">
@@ -134,41 +103,14 @@
 	
 	
 	<!--SERVICE 业务逻辑层配置 -->
-	<bean id="basDictService" class="com.crm.service.impl.BasDictServiceImpl">
-		<property name="basDictDao" ref="basDictDao"/>
-	</bean>
 	<bean id="cstActivityService" class="com.crm.service.impl.CstActivityServiceImpl">
 		<property name="cstActivityDao" ref="cstActivityDao"/>
 	</bean>
 	<bean id="cstCustomerService" class="com.crm.service.impl.CstCustomerServiceImpl">
 		<property name="cstCustomerDao" ref="cstCustomerDao"/>
 	</bean>	
-	<bean id="cstLinkManService" class="com.crm.service.impl.CstLinkManServiceImpl">
-		<property name="cstLinkManDao" ref="cstLinkManDao"/>
-	</bean>
-	<bean id="cstLostService" class="com.crm.service.impl.CstLostServiceImpl">
-		<property name="cstLostDao" ref="cstLostDao"/>
-	</bean>
-	<bean id="cstOrderService" class="com.crm.service.impl.CstOrderServiceImpl">
-		<property name="cstOrderDao" ref="cstOrderDao"/>
-	</bean>
 	<bean id="cstServiceService" class="com.crm.service.impl.CstServiceServiceImpl">
 		<property name="cstServiceDao" ref="cstServiceDao"/>
-	</bean>
-	<bean id="orderLineService" class="com.crm.service.impl.OrderLineServiceImpl">
-		<property name="orderLineDao" ref="orderLineDao"/>
-	</bean>
-	<bean id="proProductService" class="com.crm.service.impl.ProProductServiceImpl">
-		<property name="proProductDao" ref="proProductDao"/>
-	</bean>
-	<bean id="proStorageService" class="com.crm.service.impl.ProStorageServiceImpl">
-		<property name="proStorageDao" ref="proStorageDao"/>
-	</bean>
-	<bean id="salChanceService" class="com.crm.service.impl.SalChanceServiceImpl">
-		<property name="salChanceDao" ref="salChanceDao"/>
-	</bean>
-	<bean id="salPlanService" class="com.crm.service.impl.SalPlanServiceImpl">
-		<property name="salPlanDao" ref="salPlanDao"/>
 	</bean>
 	<bean id="sysRoleService" class="com.crm.service.impl.SysRoleServiceImpl">
 		<property name="sysRoleDao" ref="sysRoleDao"/>

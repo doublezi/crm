@@ -41,12 +41,8 @@
 		<mapping resource="com/crm/pojo/SysUser.hbm.xml"/>
 		<mapping resource="com/crm/pojo/SysRight.hbm.xml"/>
 		<mapping resource="com/crm/pojo/SysRoleRight.hbm.xml"/>
-		<mapping resource="com/crm/pojo/SalChance.hbm.xml"/>
-		<mapping resource="com/crm/pojo/SalPlan.hbm.xml"/>
 		<mapping resource="com/crm/pojo/CstCustomer.hbm.xml"/>
-		<mapping resource="com/crm/pojo/CstLinkMan.hbm.xml"/>
 		<mapping resource="com/crm/pojo/CstActivity.hbm.xml"/>
-		<mapping resource="com/crm/pojo/CstLost.hbm.xml"/>
 		<mapping resource="com/crm/pojo/CstService.hbm.xml"/>
 		
 	</session-factory>
