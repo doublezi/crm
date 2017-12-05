@@ -55,6 +55,12 @@ public class SysUser {
 	public void setUserFlag(int userFlag) {
 		this.userFlag = userFlag;
 	}
+	@Override
+	public String toString() {
+		return "SysUser [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword + ", userFlag="
+				+ userFlag + ", sysRole=" + sysRole + "]";
+	}
+	
 	
 	
 }

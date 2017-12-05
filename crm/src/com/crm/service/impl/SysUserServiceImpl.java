@@ -39,6 +39,12 @@ public class SysUserServiceImpl implements SysUserService {
 		List<SysUser> sysUsers = sysUserDao.findAll();
 		return sysUsers;
 	}
+
+	@Override
+	public SysUser validate(String username, String userpassword) {
+		SysUser sysUser = sysUserDao.validate(username, userpassword);
+		return sysUser;
+	}
 	
 	
 }

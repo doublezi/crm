@@ -17,9 +17,9 @@ public class SysUserDaoImpl implements SysUserDao {
 	}
 
 	
-	//---
-	//---
-	//---
+
+	//-------------------------------------------------------------------
+
 	
 	@Override
 	public void add(SysUser sysUser) {
@@ -54,5 +54,36 @@ public class SysUserDaoImpl implements SysUserDao {
 		List<SysUser> sysUsers = query.list();
 		return sysUsers;
 	}
+	//-------------------------------------------------------------------
 
+	
+	
+	//===================================================================
+	
+	/**
+	 * 验证用户名和密码
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public SysUser validate(String username, String userpassword) {
+		Session session = sessionFactory.openSession();
+		String hql= " FROM SysUser su "
+				  + " WHERE "
+				  + " su.userName=:username "
+				  + " AND "
+				  + " su.userPassword=:userpassword ";
+		Query<SysUser> query = session.createQuery(hql);
+		query.setParameter("username", username);
+		query.setParameter("userpassword", userpassword);
+		List<SysUser> list = query.list();
+		if(list.size()!=0) {
+			return list.get(0);
+		}else {
+			return null;
+		}
+	}
+	
+	
+	//===================================================================
+	
 }

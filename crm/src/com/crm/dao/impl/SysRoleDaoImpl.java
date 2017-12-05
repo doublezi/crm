@@ -47,9 +47,10 @@ public class SysRoleDaoImpl implements SysRoleDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SysRole> findAll() {
+		String hql="FROM SysRole";
 		List<?> list = this.sessionFactory.openSession() 
-						   			.createQuery("FROM syRole")
-						   			.list();
+						   				  .createQuery(hql)
+						   			      .list();
 		return (List<SysRole>) list;
 	}
 

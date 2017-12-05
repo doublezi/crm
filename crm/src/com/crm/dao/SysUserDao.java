@@ -6,6 +6,7 @@ import com.crm.pojo.SysUser;
 
 public interface SysUserDao {
 
+	//.--------------------------------
 	public void add(SysUser sysUser);
 	
 	public void delete(SysUser sysUser);
@@ -15,5 +16,10 @@ public interface SysUserDao {
 	public SysUser findById(long id);
 	
 	public List<SysUser> findAll();
+	//.---------------------------------
+	
+	//.=================================
+	public SysUser validate(String username,String userpassword);
+	//.=================================
 	
 }
