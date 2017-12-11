@@ -58,6 +58,7 @@
 	 -->
 	<mvc:resources location="/assets/" mapping="/assets/**" />
 	<mvc:resources location="/assets/" mapping="sysuser/assets/**" />
+	<mvc:resources location="/assets/" mapping="sysuser/redirectEditPage/assets/**" />
 	
 	<!-- 7. 其他： -->
 	<mvc:view-controller path="/" view-name="login"/>

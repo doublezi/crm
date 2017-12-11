@@ -41,7 +41,7 @@ public class SysUserDaoImpl implements SysUserDao {
 
 	@Override
 	public SysUser findById(long id) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		SysUser sysUser = session.get(SysUser.class, id);
 		return sysUser;
 	}

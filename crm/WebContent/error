@@ -1,4 +1,0 @@
-是否在hibernate中mapping了：org.hibernate.boot.MappingException: 
-Association [com.crm.pojo.SysRole.sysUsers] references an unmapped entity [com.crm.pojo.SysRole.sysUsers] : origin(com/crm/pojo/SysRole.hbm.xml)
-
-
