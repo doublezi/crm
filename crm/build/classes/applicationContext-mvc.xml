@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+	
+	<!-- 
+		#核心配置项#
+		1. 配置扫描包
+		2. 配置处理器映射器
+		3. 配置处理器适配器
+		4. 配置视图解析器
+		5. 配置可支持的媒体类型（.json/.xml/...）
+		6. 定位静态资源位置
+	 -->
+	 
+	<!-- 1. 配置扫描的包 -->	
+	<context:component-scan base-package="com.crm.controller"/>
+	
+	<!-- 2. 用于注解的处理器映射器 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	
+	<!-- 3. 用于注解的处理器适配器 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+	
+	<!-- 4. 配置视图解析器-->
+	<!-- 配置sprigmvc视图解析器：解析逻辑试图 
+		  后台返回逻辑试图：index
+	              视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/jsps/index.jsp-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/crm/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- 5. 配置可支持的媒体类型（.json/.xml/...） -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+				<property name="mediaTypes">
+					<map>
+						<entry key="json" value="application/json"></entry>
+						<entry key="xml" value="application/xml"></entry>
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- 6. 定位静态资源位置（不配置的话，没有特效 U•ェ•*U） -->
+	<!-- 
+		location: 静态资源的物理路径
+		mapping:  请求路径（http://localhost:8080/crm/sysuser/assets/js/jquery.min.js）
+	 -->
+	<mvc:resources location="/assets/" mapping="/assets/**" />
+	<mvc:resources location="/assets/" mapping="sysuser/assets/**" />
+	<mvc:resources location="/assets/" mapping="sysuser/redirectEditPage/assets/**" />
+	
+	<!-- 7. 其他： -->
+	<mvc:view-controller path="/" view-name="login"/>
+</beans>
