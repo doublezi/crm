@@ -1,6 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- ref jstl-tag BEGIN -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- ref jstl-tag END -->
+<!-- ref spring-tag BEGIN -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!-- ref spring-tag END   -->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -145,48 +151,61 @@
         </div>
 
         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-          <form action="${pageContext.servletContext.contextPath}/sysuser/edit/${sysUser.userId}" method="post" class="am-form am-form-horizontal">
+          <!-- 
+          		###Spring's Form Tag###
+          		1. 账号编号-
+          		2. 账户名称-
+          		3. 原始密码-
+          		4. 持有权限-
+          		5. 所处状态-
+          		6. 输入新密码-
+          		7. 再次输入密码-
+          		【备注】6+7要用js验证后才能将数据传入后台 if(show-inp==showainp)POST URI
+           -->
+          <form:form modelAttribute="sysUser" action="${pageContext.servletContext.contextPath}/sysuser/edit/${sysUser.userId}" method="post" class="am-form am-form-horizontal">
             <div class="am-form-group">
-              <label for="user-name" class="am-u-sm-3 am-form-label">账户编号</label>
+              <label for="user-id" class="am-u-sm-3 am-form-label">账户编号</label>
               <div class="am-u-sm-9">
-                <input name="show-userid" disabled="disabled" type="text"  id="sysuser-id" placeholder="${sysUser.userId}">
-                <input name="userId" value="${sysUser.userId}" type="hidden" />
+                <form:input path="userId" value="${sysUser.userId}" disabled="disabled"/>
               </div>
             </div>
             <div class="am-form-group">
-              <label for="user-name" class="am-u-sm-3 am-form-label">登陆密码</label>
+              <label for="user-name" class="am-u-sm-3 am-form-label">账户名称</label>
               <div class="am-u-sm-9">
-                <input name="show-userpassword" disabled="disabled" type="text"  id="sysuser-password" placeholder="${sysUser.userPassword}">
+                <form:input path="userName" value="${sysUser.userName}" disabled="disabled"/>
               </div>
             </div>
             <div class="am-form-group">
-              <label for="user-name" class="am-u-sm-3 am-form-label">持有权限</label>
+              <label for="user-name" class="am-u-sm-3 am-form-label">原始密码</label>
               <div class="am-u-sm-9">
-                <input name="show-rolename" disabled="disabled" type="text"  id="sysuser-role" placeholder="${sysUser.sysRole.roleName}">
-              	<input name="sysRole" value="${sysUser.sysRole}" type="hidden"/>
+                <input name="orginal-password" value="${sysUser.userPassword}" disabled="disabled"/>
+              </div>
+            </div>
+            <div class="am-form-group">
+              <label for="user-name" class="am-u-sm-3 am-form-label">持有权限(保密)</label>
+              <div class="am-u-sm-9">
+                <form:hidden path="sysRole" value="${sysUser.sysRole}" disabled="disabled"/>
               </div>
             </div>
             <div class="am-form-group">
               <label for="user-name" class="am-u-sm-3 am-form-label">所处状态</label>
               <div class="am-u-sm-9">
-                <input name="show-userflag" disabled="disabled" type="text"  id="sysuser-flag" placeholder="${sysUser.userFlag}">
-              	<input name="userFlag" value="${sysUser.userFlag}" type="hidden"/>
+                <form:input path="userFlag" value="${sysUser.userFlag}" disabled="disabled"/>
               </div>
             </div>
 
             <div class="am-form-group">
-              <label for="user-email" class="am-u-sm-3 am-form-label">输入新密码</label>
+              <label for="input-new-password" class="am-u-sm-3 am-form-label">输入新密码</label>
               <div class="am-u-sm-9">
-                <input name="show-new-userpassword" type="password" id="user-password" placeholder="输入新密码">
-                <input name="userPassword" type="hidden" />
+                <form:password path="userPassword" placeholder="输入新密码"/>
                 <small>输入新密码</small>
               </div>
             </div>
 
             <div class="am-form-group">
-              <label for="user-phone" class="am-u-sm-3 am-form-label">再次输入新密码</label>
+              <label for="again-input-new-password" class="am-u-sm-3 am-form-label">再次输入新密码</label>
               <div class="am-u-sm-9">
-                <input name="again" type="password" id="user-password-again" placeholder="再次输入新密码">
+                <input name="show-againinputnewpassword" value="再次输入新密码(开发中)" disabled="disabled"/>
                 <small>鼓起勇气，再输一次</small>
               </div>
             </div>
@@ -196,7 +215,7 @@
                 <button type="submit" class="am-btn am-btn-primary">提交改密方案*(੭*ˊᵕˋ)੭*ଘ</button>
               </div>
             </div>
-          </form>
+          </form:form>
         </div>
       </div>
     </div>

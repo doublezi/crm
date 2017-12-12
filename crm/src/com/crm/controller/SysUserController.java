@@ -1,11 +1,15 @@
 package com.crm.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +48,12 @@ public class SysUserController {
 	private SysUserService sysUserService;
 	@Autowired
 	private SysRoleService SysRoleService;
-
+	/**
+	 * 
+	 * @param sysUser
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute SysUser sysUser, Model model) {
 
@@ -77,7 +86,11 @@ public class SysUserController {
 		}
 
 	}
-
+	/**
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		List<SysUser> listUser = sysUserService.findAll();
@@ -90,12 +103,19 @@ public class SysUserController {
 			return "error";
 		}
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/redirectAddPage", method = RequestMethod.GET)
 	public String redirectAddPage() {
 		return "sys/user/add";
 	}
-
+	/**
+	 * 添加新的系统用户
+	 * @param sysUser 使用{@code @ModelAttribute}接收表单数据并封装于{@code SysUser}
+	 * @return 如果成功，返回{@link list.jsp} ； 如果失败，返回{@link error.jsp}
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@ModelAttribute SysUser sysUser) {
 		System.err.println("Wrap the POJO of 'sysUser' is [" + sysUser + "]");
@@ -108,8 +128,12 @@ public class SysUserController {
 		}
 
 	}
-	
-	//跳转到修改页面
+	/**
+	 * 跳转到修改页面
+	 * @param userId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/redirectEditPage/{userId}", method = RequestMethod.GET)
 	public String redirectEditPage(@PathVariable("userId") Long userId, Model model) {
 
@@ -123,25 +147,55 @@ public class SysUserController {
 		}
 
 	}
-    
-	//修改（编辑）/.暂且只修改密码
+    /**
+     * 修改（编辑）/.暂且只修改密码
+     * @param userId 
+     * @param sysUser
+     * @param br
+     * @return
+     */
 	@RequestMapping(value = "/edit/{userId}", method = RequestMethod.POST)
 	public String edit(@PathVariable("userId") Long userId,@Validated SysUser sysUser,BindingResult br) {
 		
-		if(br.hasErrors())return "error";
-		
-		System.err.println("After commit the instance of 'sysUser' is ["+sysUser+"]");
-		
-		//数据库里调取
-		SysUser s_sysUser = sysUserService.findById(userId);
-		s_sysUser.setUserPassword(sysUser.getUserPassword());
-		
-		//保存修改
-		sysUserService.update(s_sysUser);
+		System.err.println("br.hasErrors() before the instance of 'sysUser' is ["+sysUser+"]");
+		if(br.hasErrors()) {//. br监测到错误信息
+			//. 在控制台查看页面出错信息并返回主页
+			List<ObjectError> allErrors = br.getAllErrors();
+			for(ObjectError or:allErrors) {
+				System.err.println("Object Errors is {"+or+"}");
+			}
+			//. 在控制台查看Model属性情况
+			Map<String, Object> model = br.getModel();
+			for(Map.Entry<String, Object> entry:model.entrySet()) {
+				System.err.println("KEY["+entry.getKey()+"],VALUE["+entry.getValue()+"]");
+			}
+			return "redirect:list";
+		}else {//. br未监测到页面错误信息
+			//. 提取SysRole的编号并完成修改
+			Map<String, Object> model = br.getModel();
+			if(model.containsKey("sysRole")) {
+				Object object = model.get("sysRole");
+				if(object instanceof String) {
+					Long sysRoleId=Long.valueOf((String)object);
+					System.out.println("sysRoleId is ["+sysRoleId+"]");
+					//. 调取SysRole对象
+					SysRole sysRole = SysRoleService.getById(sysRoleId);
+					//. 重新保存用户权限
+					sysUser.setSysRole(sysRole);
+					//. 提交修改
+					sysUserService.update(sysUser);
+				}
+			}
+		}
+		System.err.println("br.hasErrors() after the instance of 'sysUser' is ["+sysUser+"]");
 		
 		return "redirect:/sysuser/list";
 	}
-
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("userId") Long userId) {
 
@@ -149,7 +203,7 @@ public class SysUserController {
 
 		if (sysUser != null) {
 			sysUserService.delete(sysUser);
-			return "redirect:list";
+			return "forward:list";
 		} else {
 			return "error";
 		}
