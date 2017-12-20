@@ -13,6 +13,8 @@ public interface SysUserService {
 	
 	public void update(SysUser sysUser);
 	
+	public void updatePassword(long userId,String newPassword);
+	
 	public SysUser findById(long id);
 	
 	public List<SysUser> findAll();

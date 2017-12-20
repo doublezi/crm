@@ -38,7 +38,22 @@ public class SysUserDaoImpl implements SysUserDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(sysUser);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void updatePassword(long userId ,String newPassword) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql="UPDATE SysUser su "
+				  + "SET "
+				  + "su.userPassword= :newPassword "
+				  + "WHERE "
+				  + "su.userId= :userId";
+		Query<SysUser> query = session.createQuery(hql);
+		query.setParameter("newPassword", newPassword);
+		query.setParameter("userId", userId);
+		query.executeUpdate();
+	}
+	
 	@Override
 	public SysUser findById(long id) {
 		Session session = sessionFactory.getCurrentSession();
@@ -82,6 +97,10 @@ public class SysUserDaoImpl implements SysUserDao {
 			return null;
 		}
 	}
+
+
+
+
 	
 	
 	//===================================================================

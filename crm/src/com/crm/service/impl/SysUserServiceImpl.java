@@ -27,6 +27,12 @@ public class SysUserServiceImpl implements SysUserService {
 	public void update(SysUser sysUser) {
 		sysUserDao.update(sysUser);
 	}
+	
+	@Override
+	public void updatePassword(long userId, String newPassword) {
+		sysUserDao.updatePassword(userId, newPassword);
+	}
+	
 
 	@Override
 	public SysUser findById(long id) {
@@ -45,6 +51,7 @@ public class SysUserServiceImpl implements SysUserService {
 		SysUser sysUser = sysUserDao.validate(username, userpassword);
 		return sysUser;
 	}
-	
+
+
 	
 }

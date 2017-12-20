@@ -13,6 +13,8 @@ public interface SysUserDao {
 	
 	public void update(SysUser sysUser);
 	
+	public void updatePassword(long usrId,String newPassword);
+	
 	public SysUser findById(long id);
 	
 	public List<SysUser> findAll();
