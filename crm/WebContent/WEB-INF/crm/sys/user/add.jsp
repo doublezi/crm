@@ -58,7 +58,7 @@
 	    	
 	    	<div class="create-new-admin"><!-- 【2】-2 创建新的管理员  开始 -->
 				<div class="create-admin-form"><!-- 【2】-2-1  新增管理员表单  开始 -->
-					<form action="${pageContext.servletContext.contextPath}/sysuser/add" method="post">
+					<form action="add" method="post">
 						<p>创建新的管理员账号</p>
 						<div>
 							<label>用户名：</label><br>
