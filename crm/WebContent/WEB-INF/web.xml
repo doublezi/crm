@@ -12,9 +12,9 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>crm</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>n-login.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<!-- 1.确定配置文件的位置（spring配置文件）  -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -38,7 +38,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>/</url-pattern><!-- 【声明】所有资源（包括静态资源，如css,js，image）都统一有spring管理 -->
+		<url-pattern>/</url-pattern><!-- 【注意】'/'：1Spring MVC会拦截所有的请求（包括静态资源，如css,js，image） -->
 	</servlet-mapping>
 
 	<!-- 4. 配置字符编码过滤器 -->

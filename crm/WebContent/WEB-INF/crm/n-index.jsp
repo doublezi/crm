@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td><a href="<c:url value="/sysuser/list"/>">用户管理</a></td>
-					<td><a href="">客户管理</a></td>
+					<td><a href="<c:url value="/cstcustomer/list"/>">客户管理</a></td>
 				</tr>
 				<tr>
 					<td><a href="">权限管理</a></td>

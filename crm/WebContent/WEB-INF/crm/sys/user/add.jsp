@@ -11,7 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>客户管理页面</title>
         <!-- 外部样式表引入 开始 -->
-        <link rel="stylesheet" type="text/css" href="assets/css/sys-user-edit.css">
         <!-- 外部样式表引入 结束 -->
     </head>
     <body>
@@ -39,7 +38,7 @@
 					</tr>
 					<tr>
 						<td><a href="<c:url value="/sysuser/list"/>">用户管理</a></td>
-						<td><a href="">客户管理</a></td>
+						<td><a href="<c:url value="/cstcustomer/list"/>">客户管理</a></td>
 					</tr>
 					<tr>
 						<td><a href="">权限管理</a></td>
@@ -62,7 +61,7 @@
 						<p>创建新的管理员账号</p>
 						<div>
 							<label>用户名：</label><br>
-							<input type="text" name="userId">
+							<input type="text" name="userName">
 						</div>
 						<div>
 							<label>新密码：</label><br>

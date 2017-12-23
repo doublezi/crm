@@ -17,6 +17,8 @@
 		4. 配置视图解析器
 		5. 配置可支持的媒体类型（.json/.xml/...）
 		6. 定位静态资源位置
+		#高级应用#
+		7. 配置文件上传/下载解析器
 	 -->
 	 
 	<!-- 1. 配置扫描的包 -->	
@@ -56,10 +58,11 @@
 		location: 静态资源的物理路径
 		mapping:  请求路径（http://localhost:8080/crm/sysuser/assets/js/jquery.min.js）
 	 -->
-	<mvc:resources location="/assets/" mapping="/assets/**" />
-	<mvc:resources location="/assets/" mapping="sysuser/assets/**" />
-	<mvc:resources location="/assets/" mapping="sysuser/redirectEditPage/assets/**" />
+
 	
-	<!-- 7. 其他： -->
+	<!-- 7. 配置文件上传/下载解析器（基于Apache Commons FileUpload要导commons-fileupload.jar） -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
+	<!-- other. 其他： -->
 	<mvc:view-controller path="/" view-name="n-login"/>
 </beans>

@@ -154,6 +154,8 @@ public class SysUserController {
 	}
     /**
      * 修改（编辑）/.暂且只修改密码
+     * 1. 使用URI模板技术接受用户ID
+     * 2. 使用对象封装表单数据
      * @param userId 
      * @param sysUser
      * @param br
